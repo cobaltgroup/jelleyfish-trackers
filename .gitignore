@@ -1,0 +1,4 @@
+target/
+bin/
+app.properties
+src/main/resources/app.properties

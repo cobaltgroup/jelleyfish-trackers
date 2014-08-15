@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Edit Makes</title>
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="vendor/bootstrap-3.2.0/js/DataTrans.js"></script>
+<link href="vendor/bootstrap-3.2.0/css/bootstrap.min.css"
+	rel="stylesheet" type="css/style">
+</head>
+<body onload="loadMakes()">
+	<!-- Navigation bar -->
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">Car Trending Analysis</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="/">Home</a></li>
+					<li><a href="/SearchPage.html">Custom Search</a></li>
+					<li><a href="/addAndRemoveMakes.html">Edit Makes</a></li>
+					
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<ul class="list-group" id="Makes">
+	</ul>
+	
+	<!-- Add/delete buttons -->
+	<div id="twoButtons" align="center">
+		<h5>Add a Make</h5>
+		<form name="myForm">
+			<div class="input-group">
+				<input type="search" style="width: 110px" id="input1"
+					class="form-control" name="searchInput" placeholder="Enter a make"
+					onKeydown="Javascript: if (event.keyCode==13) alert('Please press the Submit button instead of the Enter key');">
+				<input type="search" style="width: 150px" id="input1"
+					class="form-control" name="searchNameInput" placeholder="Enter a search alias"
+					onKeydown="Javascript: if (event.keyCode==13) alert('Please press the Submit button instead of the Enter key');">
+				<button type="button" class="btn btn-default" value="Perform Search"
+					onclick="addCar()">Add</button>
+			</div>
+		</form>
+		<p>&nbsp</p>
+		<h5>Remove a Make</h5>
+		<form name="deleteForm">
+		<div class="input-group">
+			<select name="searchInput" id = "select" style="width: 235px; font-size: large">
+				
+			</select>
+			<button type="button" class="btn btn-default" value="Subtract Car"
+				onclick="subtractCar()">Remove</button>
+		</div>
+		</form>
+	</div>
+	<p>&nbsp</p>
+	<!-- Footer -->
+	<div class="footer"
+		style="background-color: #D0D0D0; text-align: center">
+		<div class="container">
+			<p class="text-muted">Jelleyfish Trackers, 2014</p>
+		</div>
+	</div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="vendor/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

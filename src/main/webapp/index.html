@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title>Car Trends on Social Media</title>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+   <script src="vendor/bootstrap-3.2.0/js/DataTrans.js"></script>
+    
+    <!-- Bootstrap -->
+	<link href="vendor/bootstrap-3.2.0/css/bootstrap.min.css" rel="stylesheet" type = "css/style">
+  </head>
+  <body onload = "load()">
+  
+  <!-- Navigation bar -->
+  <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Car Trending Analysis</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      	<li ><a href="/">Home</a></li>
+      	<li ><a href="/SearchPage.html">Custom Search</a></li>
+        	<li ><a href="/addAndRemoveMakes.html">Edit Makes</a></li>
+      </ul>
+      
+		
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<!-- List of makes and scores -->
+<ul class="list-group" id="Makes">
+<div id="additionalMakes"></div>
+</ul>
+
+<!-- Bar graph -->
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script src="vendor/bootstrap-3.2.0/js/DataTrans.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    var makes=[];
+    	$.ajax({
+                type: "GET",
+                async: false,
+                url: "http://jelleyfishtrackers.com:8080/DbMakeServlet",
+                data: {},
+                dataType: "json",
+                success:function(data){
+                    if(data){
+                    	var count=0; 
+                    	for(var j=0;j<data.length;j+=2){
+                    		makes[count]=data[j];
+                    		count++;
+                    	}
+                    }
+                },
+                error:function(){
+                    alert('ERROR: Not able to find the data from your search.');
+                } 
+           });
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Make');
+        data.addColumn('number', 'Score');
+        for(var i=0;i<makes.length;i++){
+        data.addRow([makes[i],parseInt(document.getElementById(makes[i]).innerText)]);
+      	}
+
+        // Set chart options
+         var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+        var options = {'title':'Scores of Makes',
+                       'width':width,
+                       'height':350,
+                       'hAxis':{'minValue':0},
+                       };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+ 
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div" width="100%"></div>
+  </body>
+</html>
+
+
+
+
+<!-- Footer -->
+<div class="footer" style = "background-color: #D0D0D0; text-align: center">
+      <div class="container" >
+        <p class="text-muted" >Jelleyfish Trackers, 2014</p>
+      </div>
+</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="vendor/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
